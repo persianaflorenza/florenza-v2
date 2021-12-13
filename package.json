@@ -2,17 +2,24 @@
   "name": "florenza",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "yarn codegen --watch & next dev",
+    "prebuild": "yarn codegen",
     "build": "next build",
+    "codegen": "graphql-codegen --config graphqlrc.yml -r dotenv/config",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "graphql": "^16.1.0",
+    "graphql-tag": "^2.12.6",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.3.0",
+    "@graphql-codegen/typescript": "^2.4.1",
+    "@graphql-codegen/typescript-operations": "^2.2.1",
     "@types/node": "16.11.12",
     "@types/react": "17.0.37",
     "autoprefixer": "^10.4.0",

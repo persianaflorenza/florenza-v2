@@ -1,0 +1,34 @@
+schema:
+  - ${NEXT_PUBLIC_DATOCMS_API_URL}:
+      headers:
+        Authorization: Bearer ${NEXT_PUBLIC_DATOCMS_API_KEY}
+extensions:
+  endpoints:
+    default:
+      url: https://graphql.datocms.com/
+      headers:
+        Authorization: Bearer 8d5106178bc5d178a9a05ae39e933e
+  codegen:
+    generates:
+      src/generated/schema.ts:
+        schema:
+          - ${NEXT_PUBLIC_DATOCMS_API_URL}:
+              headers:
+                Authorization: Bearer ${NEXT_PUBLIC_DATOCMS_API_KEY}
+        plugins:
+          - typescript
+          - typescript-operations
+        documents: src/queries/*.gql
+        config:
+          skipTypename: true
+          avoidOptionals: true
+          omitOperationSuffix: true
+          flattenGeneratedTypes: true
+          namingConvention:
+          enumValues: keep
+
+  # endpoints:
+  #   default:
+  #     url: ${NEXT_PUBLIC_DATOCMS_API_URL}
+  #     headers:
+  #       Authorization: Bearer ${NEXT_PUBLIC_DATOCMS_API_KEY}

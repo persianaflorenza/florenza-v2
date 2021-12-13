@@ -1,0 +1,5 @@
+query ProductSlugs {
+  allProducts {
+    slug
+  }
+}

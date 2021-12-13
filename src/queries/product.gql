@@ -1,0 +1,23 @@
+query ProductPage($slug: String) {
+  product(filter: { slug: { eq: $slug } }) {
+    id
+    title
+    description
+    slug
+    isAutomated
+    hasBlackout
+    hasTranslucid
+    gallery {
+      url
+      responsiveImage(imgixParams: { h: 800, w: 1000, fit: crop }) {
+        src
+        srcSet
+        webpSrcSet
+        sizes
+        alt
+        width
+        height
+      }
+    }
+  }
+}
