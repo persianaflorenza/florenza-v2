@@ -1,13 +1,17 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
 
 const Home: NextPage = () => {
   return (
     <div>
-      <h1>Homepage</h1>
+      <h1 className="text-navy-500 text-7xl">Hello world</h1>
     </div>
   );
+};
+
+export const getStaticProps = () => {
+  return {
+    props: { count: 10 },
+  };
 };
 
 export default Home;
