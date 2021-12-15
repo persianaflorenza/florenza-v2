@@ -25,10 +25,4 @@ extensions:
           omitOperationSuffix: true
           flattenGeneratedTypes: true
           namingConvention:
-          enumValues: keep
-
-  # endpoints:
-  #   default:
-  #     url: ${NEXT_PUBLIC_DATOCMS_API_URL}
-  #     headers:
-  #       Authorization: Bearer ${NEXT_PUBLIC_DATOCMS_API_KEY}
+            enumValues: keep

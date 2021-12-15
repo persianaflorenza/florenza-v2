@@ -2,12 +2,22 @@ import { HomepageContent } from '@src/generated/schema';
 import type { NextPage } from 'next';
 import HomePageQuery from '@src/queries/homepage.gql';
 import { contentService } from '@src/services';
+import { InferProps } from '@src/types/general';
+import { HomeOrganism } from '@src/components';
+import dynamic from 'next/dynamic';
 
-const Home: NextPage = ({ data }: any) => {
-  console.log(data)
+const Layout = dynamic(async () => {
+  return (await import('@src/components/organisms/layout/layout')).Layout;
+});
+
+interface Props extends InferProps<typeof getStaticProps> {}
+
+const Home: NextPage<Props> = ({ data }) => {
   return (
     <div>
-      <h1 className="text-navy-500 text-7xl">Hello worlder</h1>
+      <Layout>
+        <HomeOrganism content={data} />
+      </Layout>
     </div>
   );
 };
