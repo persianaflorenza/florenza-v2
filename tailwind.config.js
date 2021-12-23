@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       zIndex: {
         '-1': '-1',
+        60: 60,
       },
       transformOrigin: {
         0: '0%',

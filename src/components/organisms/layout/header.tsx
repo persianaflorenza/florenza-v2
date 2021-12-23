@@ -1,6 +1,6 @@
 import logo from '../../../public/logo.svg';
 import Image from 'next/image';
-import { FaTimes, FaWhatsapp } from 'react-icons/fa';
+import { FaTimes, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import { BiMenu } from 'react-icons/bi';
 import { MdClose } from 'react-icons/md';
 import NextLink from 'next/link';
@@ -59,6 +59,29 @@ const Header = () => {
   return (
     <div>
       <Container>
+        <div className=" md:grid grid-flow-col gap-6 place-items-center place-content-center w-full pt-4">
+          <div className="flex items-center text-green-500 ">
+            <FaWhatsapp className="mr-2 h-4 w-4 " />
+            <span className="font-semibold">Ligue agora!</span>
+          </div>
+
+          <div className="text-navy-100">
+            <span className="font-semibold">Atendemos todo o estado de São Paulo</span>
+          </div>
+
+          <a
+            target="_blank"
+            href="https://instagram.com/persianasflorenza?utm_medium=copy_link"
+            role="button"
+            referrerPolicy="no-referrer"
+            rel="noreferrer"
+          >
+            <div className="text-navy-500 flex items-center">
+              <FaInstagram className="mr-1 h-4 w-4 " />
+              <span className="font-semibold">@persianasflorenza</span>
+            </div>
+          </a>
+        </div>
         <div className="flex justify-between items-center py-4">
           <NextLink href={`/`}>
             <a>
@@ -76,7 +99,7 @@ const Header = () => {
             <Link href={`/#sobre`}>Quem somos</Link>
             <Link href={`/#contato`}>Contato</Link>
 
-            <div className="pl-8">
+            {/* <div className="pl-8">
               <a
                 target="_blank"
                 href="https://api.whatsapp.com/send?phone=5511991827642"
@@ -91,7 +114,7 @@ const Header = () => {
                   <span className="font-normal">sem compromisso</span>
                 </div>
               </a>
-            </div>
+            </div> */}
           </div>
 
           <div className="lg:hidden self-start">
