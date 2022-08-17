@@ -50,11 +50,11 @@ export enum ColorBucketType {
 }
 
 export type ColorField = {
-  alpha: Maybe<Scalars['IntType']>;
-  blue: Maybe<Scalars['IntType']>;
-  green: Maybe<Scalars['IntType']>;
-  hex: Maybe<Scalars['String']>;
-  red: Maybe<Scalars['IntType']>;
+  alpha: Scalars['IntType'];
+  blue: Scalars['IntType'];
+  green: Scalars['IntType'];
+  hex: Scalars['String'];
+  red: Scalars['IntType'];
 };
 
 /** Specifies how to filter by creation datetime */
@@ -81,7 +81,7 @@ export enum FaviconType {
   msApplication = 'msApplication'
 }
 
-export type FileField = {
+export type FileField = FileFieldInterface & {
   _createdAt: Scalars['DateTime'];
   _updatedAt: Scalars['DateTime'];
   alt: Maybe<Scalars['String']>;
@@ -89,10 +89,10 @@ export type FileField = {
   basename: Scalars['String'];
   blurUpThumb: Maybe<Scalars['String']>;
   blurhash: Maybe<Scalars['String']>;
-  colors: Array<Maybe<ColorField>>;
+  colors: Array<ColorField>;
   copyright: Maybe<Scalars['String']>;
-  customData: Maybe<Scalars['CustomData']>;
-  exifInfo: Maybe<Scalars['CustomData']>;
+  customData: Scalars['CustomData'];
+  exifInfo: Scalars['CustomData'];
   filename: Scalars['String'];
   focalPoint: Maybe<FocalPoint>;
   format: Scalars['String'];
@@ -103,8 +103,8 @@ export type FileField = {
   notes: Maybe<Scalars['String']>;
   responsiveImage: Maybe<ResponsiveImage>;
   size: Scalars['IntType'];
-  smartTags: Array<Maybe<Scalars['String']>>;
-  tags: Array<Maybe<Scalars['String']>>;
+  smartTags: Array<Scalars['String']>;
+  tags: Array<Scalars['String']>;
   title: Maybe<Scalars['String']>;
   url: Scalars['String'];
   video: Maybe<UploadVideoField>;
@@ -113,6 +113,7 @@ export type FileField = {
 
 
 export type FileFieldAltArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   locale: InputMaybe<SiteLocale>;
 };
 
@@ -126,27 +127,107 @@ export type FileFieldBlurUpThumbArgs = {
 
 
 export type FileFieldCustomDataArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   locale: InputMaybe<SiteLocale>;
 };
 
 
 export type FileFieldFocalPointArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   locale: InputMaybe<SiteLocale>;
 };
 
 
 export type FileFieldResponsiveImageArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   imgixParams: InputMaybe<ImgixParams>;
+  locale: InputMaybe<SiteLocale>;
   sizes: InputMaybe<Scalars['String']>;
 };
 
 
 export type FileFieldTitleArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   locale: InputMaybe<SiteLocale>;
 };
 
 
 export type FileFieldUrlArgs = {
+  imgixParams: InputMaybe<ImgixParams>;
+};
+
+export type FileFieldInterface = {
+  _createdAt: Scalars['DateTime'];
+  _updatedAt: Scalars['DateTime'];
+  alt: Maybe<Scalars['String']>;
+  author: Maybe<Scalars['String']>;
+  basename: Scalars['String'];
+  blurUpThumb: Maybe<Scalars['String']>;
+  blurhash: Maybe<Scalars['String']>;
+  colors: Array<ColorField>;
+  copyright: Maybe<Scalars['String']>;
+  customData: Scalars['CustomData'];
+  exifInfo: Scalars['CustomData'];
+  filename: Scalars['String'];
+  focalPoint: Maybe<FocalPoint>;
+  format: Scalars['String'];
+  height: Maybe<Scalars['IntType']>;
+  id: Scalars['UploadId'];
+  md5: Scalars['String'];
+  mimeType: Scalars['String'];
+  notes: Maybe<Scalars['String']>;
+  responsiveImage: Maybe<ResponsiveImage>;
+  size: Scalars['IntType'];
+  smartTags: Array<Scalars['String']>;
+  tags: Array<Scalars['String']>;
+  title: Maybe<Scalars['String']>;
+  url: Scalars['String'];
+  video: Maybe<UploadVideoField>;
+  width: Maybe<Scalars['IntType']>;
+};
+
+
+export type FileFieldInterfaceAltArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+
+export type FileFieldInterfaceBlurUpThumbArgs = {
+  imgixParams: InputMaybe<ImgixParams>;
+  punch?: InputMaybe<Scalars['Float']>;
+  quality?: InputMaybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type FileFieldInterfaceCustomDataArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+
+export type FileFieldInterfaceFocalPointArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+
+export type FileFieldInterfaceResponsiveImageArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  imgixParams: InputMaybe<ImgixParams>;
+  locale: InputMaybe<SiteLocale>;
+  sizes: InputMaybe<Scalars['String']>;
+};
+
+
+export type FileFieldInterfaceTitleArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
+  locale: InputMaybe<SiteLocale>;
+};
+
+
+export type FileFieldInterfaceUrlArgs = {
   imgixParams: InputMaybe<ImgixParams>;
 };
 
@@ -172,8 +253,8 @@ export type GlobalSeoField = {
   twitterAccount: Maybe<Scalars['String']>;
 };
 
-/** Record of type HomePage Feature (homepage_feature) */
-export type HomepageFeatureRecord = {
+/** Block of type HomePage Feature (homepage_feature) */
+export type HomepageFeatureRecord = RecordInterface & {
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
   _isValid: Scalars['BooleanType'];
@@ -193,19 +274,19 @@ export type HomepageFeatureRecord = {
 };
 
 
-/** Record of type HomePage Feature (homepage_feature) */
+/** Block of type HomePage Feature (homepage_feature) */
 export type HomepageFeatureRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
 
 
-/** Record of type HomePage Feature (homepage_feature) */
+/** Block of type HomePage Feature (homepage_feature) */
 export type HomepageFeatureRecordTextArgs = {
   markdown: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Record of type Homepage (homepage) */
-export type HomepageRecord = {
+export type HomepageRecord = RecordInterface & {
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
   _isValid: Scalars['BooleanType'];
@@ -222,10 +303,10 @@ export type HomepageRecord = {
   aboutText: Maybe<Scalars['String']>;
   aboutTitle: Maybe<Scalars['String']>;
   address: Maybe<Scalars['String']>;
-  carousel: Maybe<Array<Maybe<HomepageSlideRecord>>>;
+  carousel: Array<HomepageSlideRecord>;
   contactTitle: Maybe<Scalars['String']>;
   createdAt: Scalars['DateTime'];
-  features: Maybe<Array<Maybe<HomepageFeatureRecord>>>;
+  features: Array<HomepageFeatureRecord>;
   id: Scalars['ItemId'];
   landline: Maybe<Scalars['String']>;
   mapsUrl: Maybe<Scalars['String']>;
@@ -260,8 +341,8 @@ export type HomepageRecordOpeningHoursArgs = {
   markdown: InputMaybe<Scalars['Boolean']>;
 };
 
-/** Record of type HomePage Slide (homepage_slide) */
-export type HomepageSlideRecord = {
+/** Block of type HomePage Slide (homepage_slide) */
+export type HomepageSlideRecord = RecordInterface & {
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
   _isValid: Scalars['BooleanType'];
@@ -281,13 +362,13 @@ export type HomepageSlideRecord = {
 };
 
 
-/** Record of type HomePage Slide (homepage_slide) */
+/** Block of type HomePage Slide (homepage_slide) */
 export type HomepageSlideRecord_SeoMetaTagsArgs = {
   locale: InputMaybe<SiteLocale>;
 };
 
 
-/** Record of type HomePage Slide (homepage_slide) */
+/** Block of type HomePage Slide (homepage_slide) */
 export type HomepageSlideRecordTextArgs = {
   markdown: InputMaybe<Scalars['Boolean']>;
 };
@@ -1422,6 +1503,26 @@ export type ImgixParams = {
    */
   txtWidth: InputMaybe<Scalars['IntType']>;
   /**
+   * Text X Position
+   *
+   * Sets the horizontal (x) position of the text in pixels relative to the left edge of the base image.
+   *
+   * Depends on: `txt`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-x)
+   */
+  txtX: InputMaybe<Scalars['IntType']>;
+  /**
+   * Text Y Position
+   *
+   * Sets the vertical (y) position of the text in pixels relative to the top edge of the base image.
+   *
+   * Depends on: `txt`
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/url/text/txt-y)
+   */
+  txtY: InputMaybe<Scalars['IntType']>;
+  /**
    * Unsharp Mask
    *
    * Sharpens the source image using an unsharp mask.
@@ -1735,7 +1836,7 @@ export enum ProductModelOrderBy {
 }
 
 /** Record of type Produto (product) */
-export type ProductRecord = {
+export type ProductRecord = RecordInterface & {
   _createdAt: Scalars['DateTime'];
   _firstPublishedAt: Maybe<Scalars['DateTime']>;
   _isValid: Scalars['BooleanType'];
@@ -1821,6 +1922,7 @@ export type Query = {
 
 /** The query root for this schema */
 export type Query_AllProductsMetaArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   filter: InputMaybe<ProductModelFilter>;
   locale: InputMaybe<SiteLocale>;
 };
@@ -1835,12 +1937,14 @@ export type Query_AllUploadsMetaArgs = {
 
 /** The query root for this schema */
 export type Query_SiteArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   locale: InputMaybe<SiteLocale>;
 };
 
 
 /** The query root for this schema */
 export type QueryAllProductsArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   filter: InputMaybe<ProductModelFilter>;
   first?: InputMaybe<Scalars['IntType']>;
   locale: InputMaybe<SiteLocale>;
@@ -1851,6 +1955,7 @@ export type QueryAllProductsArgs = {
 
 /** The query root for this schema */
 export type QueryAllUploadsArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   filter: InputMaybe<UploadFilter>;
   first?: InputMaybe<Scalars['IntType']>;
   locale: InputMaybe<SiteLocale>;
@@ -1861,12 +1966,14 @@ export type QueryAllUploadsArgs = {
 
 /** The query root for this schema */
 export type QueryHomepageArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   locale: InputMaybe<SiteLocale>;
 };
 
 
 /** The query root for this schema */
 export type QueryProductArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   filter: InputMaybe<ProductModelFilter>;
   locale: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ProductModelOrderBy>>>;
@@ -1875,9 +1982,30 @@ export type QueryProductArgs = {
 
 /** The query root for this schema */
 export type QueryUploadArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   filter: InputMaybe<UploadFilter>;
   locale: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<UploadOrderBy>>>;
+};
+
+export type RecordInterface = {
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt: Maybe<Scalars['DateTime']>;
+  _publishedAt: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  id: Scalars['ItemId'];
+};
+
+
+export type RecordInterface_SeoMetaTagsArgs = {
+  locale: InputMaybe<SiteLocale>;
 };
 
 /** Specifies how to filter by upload type */
@@ -1940,6 +2068,7 @@ export type SiteFaviconMetaTagsArgs = {
 
 
 export type SiteGlobalSeoArgs = {
+  fallbackLocales: InputMaybe<Array<SiteLocale>>;
   locale: InputMaybe<SiteLocale>;
 };
 
@@ -2280,15 +2409,15 @@ export type UploadSizeFilter = {
 /** Specifies how to filter by tags */
 export type UploadTagsFilter = {
   /** Filter uploads linked to all of the specified tags */
-  allIn: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  allIn: InputMaybe<Array<Scalars['String']>>;
   /** Filter uploads linked to at least one of the specified tags */
-  anyIn: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  anyIn: InputMaybe<Array<Scalars['String']>>;
   /** Filter uploads linked to the specified tag */
   contains: InputMaybe<Scalars['String']>;
   /** Search for uploads with an exact match */
-  eq: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  eq: InputMaybe<Array<Scalars['String']>>;
   /** Filter uploads not linked to any of the specified tags */
-  notIn: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  notIn: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** Specifies how to filter by default title */
@@ -2337,8 +2466,8 @@ export type UploadUpdatedAtFilter = {
 };
 
 export type UploadVideoField = {
-  duration: Scalars['Int'];
-  framerate: Scalars['Int'];
+  duration: Maybe<Scalars['Int']>;
+  framerate: Maybe<Scalars['Int']>;
   mp4Url: Maybe<Scalars['String']>;
   muxAssetId: Scalars['String'];
   muxPlaybackId: Scalars['String'];
@@ -2380,14 +2509,14 @@ export enum VideoMp4Res {
 }
 
 export type FocalPoint = {
-  x: Maybe<Scalars['FloatType']>;
-  y: Maybe<Scalars['FloatType']>;
+  x: Scalars['FloatType'];
+  y: Scalars['FloatType'];
 };
 
 export type HomepageContentVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomepageContent = { allProducts: Array<{ id: any, title: string | null | undefined, intro: string | null | undefined, slug: string | null | undefined, gallery: Array<{ url: string, responsiveImage: { src: string, srcSet: string, webpSrcSet: string, sizes: string, alt: string | null | undefined, width: any, height: any } | null | undefined }> }>, homepage: { id: any, productsTitle: string | null | undefined, aboutTitle: string | null | undefined, aboutText: string | null | undefined, aboutSideText: string | null | undefined, contactTitle: string | null | undefined, whatsappNumber: string | null | undefined, landline: string | null | undefined, address: string | null | undefined, mapsUrl: string | null | undefined, openingHours: string | null | undefined, carousel: Array<{ __typename: 'HomepageSlideRecord', id: any, text: string | null | undefined, image: { url: string, responsiveImage: { src: string, title: string | null | undefined, srcSet: string, webpSrcSet: string, sizes: string, alt: string | null | undefined, width: any, height: any } | null | undefined } | null | undefined } | null | undefined> | null | undefined, features: Array<{ id: any, text: string | null | undefined, title: string | null | undefined } | null | undefined> | null | undefined, aboutBanner: { url: string, responsiveImage: { src: string, title: string | null | undefined, srcSet: string, webpSrcSet: string, sizes: string, alt: string | null | undefined, width: any, height: any } | null | undefined } | null | undefined, whatsappLogo: { url: string, responsiveImage: { src: string, title: string | null | undefined, srcSet: string, webpSrcSet: string, sizes: string, alt: string | null | undefined, width: any, height: any } | null | undefined } | null | undefined } | null | undefined };
+export type HomepageContent = { allProducts: Array<{ id: any, title: string | null | undefined, intro: string | null | undefined, slug: string | null | undefined, gallery: Array<{ url: string, responsiveImage: { src: string, srcSet: string, webpSrcSet: string, sizes: string, alt: string | null | undefined, width: any, height: any } | null | undefined }> }>, homepage: { id: any, productsTitle: string | null | undefined, aboutTitle: string | null | undefined, aboutText: string | null | undefined, aboutSideText: string | null | undefined, contactTitle: string | null | undefined, whatsappNumber: string | null | undefined, landline: string | null | undefined, address: string | null | undefined, mapsUrl: string | null | undefined, openingHours: string | null | undefined, carousel: Array<{ __typename: 'HomepageSlideRecord', id: any, text: string | null | undefined, image: { url: string, responsiveImage: { src: string, title: string | null | undefined, srcSet: string, webpSrcSet: string, sizes: string, alt: string | null | undefined, width: any, height: any } | null | undefined } | null | undefined }>, features: Array<{ id: any, text: string | null | undefined, title: string | null | undefined }>, aboutBanner: { url: string, responsiveImage: { src: string, title: string | null | undefined, srcSet: string, webpSrcSet: string, sizes: string, alt: string | null | undefined, width: any, height: any } | null | undefined } | null | undefined, whatsappLogo: { url: string, responsiveImage: { src: string, title: string | null | undefined, srcSet: string, webpSrcSet: string, sizes: string, alt: string | null | undefined, width: any, height: any } | null | undefined } | null | undefined } | null | undefined };
 
 export type ProductSlugsVariables = Exact<{ [key: string]: never; }>;
 
