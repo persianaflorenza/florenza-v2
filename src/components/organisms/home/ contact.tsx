@@ -1,5 +1,5 @@
-import { Container } from '../../atoms/container';
-import { FaWhatsapp, FaMap, FaPhone, FaClock } from 'react-icons/fa';
+import { Container } from "../../atoms/container";
+import { FaWhatsapp, FaMap, FaPhone, FaClock } from "react-icons/fa";
 
 type ContactSectionProps = {
   contactTitle?: string;
@@ -18,6 +18,10 @@ export const ContactSection = ({
   mapsUrl,
   openingHours,
 }: ContactSectionProps) => {
+  const [regionCode, phoneNumber] = [
+    whatsappNumber?.slice(0, 2),
+    whatsappNumber?.slice(2),
+  ];
   return (
     <div className="bg-navy-500 w-full py-6">
       <Container>
@@ -41,7 +45,7 @@ export const ContactSection = ({
                     className="font-semibold text-lg text-white underline"
                     href={`https://api.whatsapp.com/send?phone=55${whatsappNumber}`}
                   >
-                    {`(11) 9 8877-3322`}
+                    {`(${regionCode}) ${phoneNumber}`}
                   </a>
                 </div>
               </div>
@@ -64,7 +68,10 @@ export const ContactSection = ({
               <h6 className=" text-gray-200">Endereço</h6>
               <div className="flex items-center">
                 <FaMap className="mr-4 h-10 w-10 text-yellow-500" />
-                <a className="font-semibold text-lg text-white underline" href={mapsUrl}>
+                <a
+                  className="font-semibold text-lg text-white underline"
+                  href={mapsUrl}
+                >
                   {address}
                 </a>
               </div>
